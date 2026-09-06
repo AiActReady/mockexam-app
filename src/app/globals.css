@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — AI Act Ready: Learn
+  Dark-first (matches brand + reduces eye strain for revision sessions),
+  light mode is a genuine alternative, not an afterthought.
+*/
+:root {
+  --color-bg: #F7F8FB;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-border: #E2E6EF;
+
+  --color-text: #0B1120;
+  --color-text-muted: #4B5670;
+  --color-text-subtle: #7A84A3;
+
+  --color-primary: #06B6D4;
+  --color-primary-strong: #0891A6;
+  --color-accent: #6E62E5;
+
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+:root.dark,
+.dark {
+  --color-bg: #0B1120;
+  --color-surface: #111C33;
+  --color-surface-raised: #16223F;
+  --color-border: #223257;
+
+  --color-text: #EAF0FB;
+  --color-text-muted: #A9B6D6;
+  --color-text-subtle: #7A88AD;
+
+  --color-primary: #22D3EE;
+  --color-primary-strong: #67E8F9;
+  --color-accent: #9C93F5;
+
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-subtle: var(--color-text-subtle);
+  --color-primary: var(--color-primary);
+  --color-primary-strong: var(--color-primary-strong);
+  --color-accent: var(--color-accent);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
