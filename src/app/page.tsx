@@ -35,7 +35,6 @@ function scoreColor(score: number) {
 export default function LandingPage() {
   return (
     <div className="flex-1">
-      {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
@@ -48,16 +47,10 @@ export default function LandingPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/register"
+                href="/dashboard"
                 className="rounded-full bg-[var(--color-primary)] px-6 py-3 font-medium text-[var(--color-bg)] transition-opacity hover:opacity-90"
               >
-                Start learning free
-              </Link>
-              <Link
-                href="/glossary"
-                className="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-              >
-                Browse the glossary
+                Start content test
               </Link>
             </div>
           </div>
@@ -67,7 +60,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How it works */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="font-display text-2xl font-semibold md:text-3xl">How it works</h2>
         <div className="mt-10 grid gap-10 md:grid-cols-3">
@@ -83,15 +75,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Knowledge map preview */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-8">
           <h2 className="font-display text-xl font-semibold">
             Always know exactly where you stand
           </h2>
           <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-            Every topic gets its own score, so revision time goes where it actually
-            helps.
+            Every topic gets its own score, so revision time goes where it actually helps.
           </p>
           <div className="mt-6 space-y-4">
             {TOPICS.map((topic) => (
@@ -112,17 +102,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="mx-auto max-w-6xl px-6 py-10">
         <div className="border-t border-[var(--color-border)] pt-6 text-xs leading-relaxed text-[var(--color-text-subtle)]">
           <p>
-            AI Act Ready: Learn is an educational tool and does not constitute legal
-            advice. Lesson content is reviewed against official EU AI Act sources and
-            guidance, with the review date shown on each lesson and glossary entry.
+            AI Act Ready: Learn is an educational tool and does not constitute legal advice.
           </p>
-          <p className="mt-2">
-            &copy; {new Date().getFullYear()} AI Act Ready. All rights reserved.
-          </p>
+          <p className="mt-2">&copy; {new Date().getFullYear()} AI Act Ready. All rights reserved.</p>
         </div>
       </footer>
     </div>
