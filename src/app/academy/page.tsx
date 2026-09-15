@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ACADEMY_LEVELS } from "@/data/curriculum";
 import { ACADEMY_MODULES } from "@/data/academy-content";
+import { ACADEMY_ASSESSMENT_QUESTIONS } from "@/data/assessments";
 
 export default function AcademyPage() {
   return (
@@ -17,7 +18,7 @@ export default function AcademyPage() {
         </p>
       </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
           <div className="text-3xl font-semibold text-[var(--color-primary)]">{ACADEMY_LEVELS.length}</div>
           <div className="mt-1 text-sm text-[var(--color-text-muted)]">progressive stages</div>
@@ -25,6 +26,10 @@ export default function AcademyPage() {
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
           <div className="text-3xl font-semibold text-[var(--color-primary)]">{ACADEMY_MODULES.length}</div>
           <div className="mt-1 text-sm text-[var(--color-text-muted)]">populated training modules</div>
+        </div>
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
+          <div className="text-3xl font-semibold text-[var(--color-primary)]">{ACADEMY_ASSESSMENT_QUESTIONS.length}</div>
+          <div className="mt-1 text-sm text-[var(--color-text-muted)]">stage knowledge questions</div>
         </div>
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
           <div className="text-3xl font-semibold text-[var(--color-primary)]">1</div>
@@ -39,6 +44,25 @@ export default function AcademyPage() {
           When a point is uncertain, material or legally sensitive, the correct behaviour is to document the assumption and escalate it.
         </p>
       </div>
+
+      <section className="mt-8 grid gap-4 md:grid-cols-2">
+        <Link href="/academy/resources" className="rounded-3xl border border-[var(--color-primary)]/40 bg-[var(--color-surface-raised)] p-6 transition hover:border-[var(--color-primary)]">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Consultant resource library</div>
+          <h2 className="mt-2 font-display text-2xl font-semibold">Practical field guides</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+            Discovery, evidence quality, vendor due diligence, delivery and handover checklists designed for simulated and supervised client work.
+          </p>
+          <div className="mt-4 text-sm font-medium text-[var(--color-primary)]">Open resource library →</div>
+        </Link>
+        <Link href="/academy/reference" className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 transition hover:border-[var(--color-primary)]">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Current-law reference</div>
+          <h2 className="mt-2 font-display text-2xl font-semibold">Avoid outdated dates and shortcuts</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+            Current implementation timeline, source hierarchy and key concepts checked against the consolidated Act and current Commission material.
+          </p>
+          <div className="mt-4 text-sm font-medium text-[var(--color-primary)]">Open desk guide →</div>
+        </Link>
+      </section>
 
       <section className="mt-10 space-y-5">
         {ACADEMY_LEVELS.map((level, index) => (
