@@ -7,6 +7,16 @@ const RESOURCES = [
     href: "/academy/reference",
   },
   {
+    title: "EU AI Act practitioner map",
+    description: "A practical route from client facts to the relevant Article, role, classification pathway, evidence request and escalation decision.",
+    href: "/academy/eu-ai-act-map",
+  },
+  {
+    title: "ISO/IEC 42001 learning map",
+    description: "Clauses 4–10, Plan-Do-Check-Act, Annex A control themes and the evidence an AIMS consultant should understand.",
+    href: "/academy/iso-42001",
+  },
+  {
     title: "Discovery & AI inventory",
     description: "Workshop prompts, minimum inventory fields, Shadow AI clues and a repeatable discovery workflow.",
     href: "/academy/resources/discovery",
@@ -36,7 +46,7 @@ export default function AcademyResourcesPage() {
         <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">CONSULTANT RESOURCE LIBRARY</div>
         <h1 className="mt-2 font-display text-4xl font-semibold">Practical field guides</h1>
         <p className="mt-4 leading-relaxed text-[var(--color-text-muted)]">
-          Use these alongside the staged learning modules. They are deliberately practical: what to ask, what to record, what evidence to expect and when to escalate.
+          Use these alongside the staged learning modules. They are deliberately practical: what to ask, what to record, what evidence to expect, where to look next and when to escalate.
         </p>
       </header>
 
