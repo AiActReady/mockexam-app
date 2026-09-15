@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ACADEMY_LEVELS } from "@/data/curriculum";
+import { ACADEMY_MODULES } from "@/data/academy-content";
 
 export default function AcademyPage() {
   return (
@@ -14,6 +15,21 @@ export default function AcademyPage() {
           client-ready AI governance consultant. Start small, build confidence, practise on simulated engagements,
           then prove readiness before using the AI Act Ready delivery tool with a real client.
         </p>
+      </div>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
+          <div className="text-3xl font-semibold text-[var(--color-primary)]">{ACADEMY_LEVELS.length}</div>
+          <div className="mt-1 text-sm text-[var(--color-text-muted)]">progressive stages</div>
+        </div>
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
+          <div className="text-3xl font-semibold text-[var(--color-primary)]">{ACADEMY_MODULES.length}</div>
+          <div className="mt-1 text-sm text-[var(--color-text-muted)]">populated training modules</div>
+        </div>
+        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5">
+          <div className="text-3xl font-semibold text-[var(--color-primary)]">1</div>
+          <div className="mt-1 text-sm text-[var(--color-text-muted)]">client-ready capstone case</div>
+        </div>
       </div>
 
       <div className="mt-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6">
@@ -61,8 +77,11 @@ export default function AcademyPage() {
       </section>
 
       <div className="mt-10 flex flex-wrap gap-3">
+        <Link href="/academy/orientation" className="rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]">
+          Begin Orientation
+        </Link>
         <Link href="/learn" className="rounded-full border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium">
-          Open current validated quiz
+          Open validated Foundation quiz
         </Link>
         <Link href="/dashboard" className="rounded-full border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium">
           Back to dashboard
