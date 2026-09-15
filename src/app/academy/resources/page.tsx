@@ -17,6 +17,16 @@ const RESOURCES = [
     href: "/academy/iso-42001",
   },
   {
+    title: "Practice case library",
+    description: "Six realistic fictional client situations covering HR, healthcare, credit, Shadow AI, public-sector decisions and SaaS feature drift.",
+    href: "/academy/cases",
+  },
+  {
+    title: "Deliverable blueprints",
+    description: "Training structures for inventories, role maps, classification memos, evidence registers, remediation roadmaps and executive readouts.",
+    href: "/academy/templates",
+  },
+  {
     title: "Discovery & AI inventory",
     description: "Workshop prompts, minimum inventory fields, Shadow AI clues and a repeatable discovery workflow.",
     href: "/academy/resources/discovery",
