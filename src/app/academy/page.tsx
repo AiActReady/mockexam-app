@@ -64,6 +64,28 @@ export default function AcademyPage() {
         </Link>
       </section>
 
+      <section className="mt-5 rounded-3xl border border-[var(--color-primary)]/50 bg-[var(--color-surface-raised)] p-6 md:p-8">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-3xl">
+            <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">New features & pilots</div>
+            <h2 className="mt-2 font-display text-2xl font-semibold">Ideas being kept separate while the core Academy is tested</h2>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
+              Consultant Passport, AI literacy evidence, an AI Governance Mentor, branching simulations, evidence-pack challenges,
+              Shadow AI discovery, red-flag drills, regulatory updates and future handoff into the real AI Act Ready delivery tool.
+            </p>
+          </div>
+          <Link
+            href="/academy/new-features"
+            className="inline-flex shrink-0 rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]"
+          >
+            Open New Features Lab
+          </Link>
+        </div>
+        <p className="mt-4 text-xs leading-relaxed text-[var(--color-text-subtle)]">
+          These items are roadmap concepts or pilots and are not part of the current readiness gate unless explicitly promoted into the core Academy later.
+        </p>
+      </section>
+
       <section className="mt-10 space-y-5">
         {ACADEMY_LEVELS.map((level, index) => (
           <article
