@@ -1,43 +1,55 @@
 import Link from "next/link";
 
-const MODULES = [
+const PATHWAY = [
   {
-    title: "1. Scope, roles & definitions",
-    body: "Provider, deployer, importer and distributor — explained in plain English.",
-    status: "Ready to test",
+    title: "0. Orientation",
+    body: "How AI Act Ready works with clients, where the boundaries are, and when to escalate.",
   },
   {
-    title: "2. Risk levels & prohibited practices",
-    body: "Learn the risk-based structure and spot prohibited AI practices.",
-    status: "Ready to test",
+    title: "1. Foundation",
+    body: "Core EU AI Act and ISO/IEC 42001 concepts in short, confidence-building lessons.",
   },
   {
-    title: "3. High-risk AI obligations",
-    body: "Risk management, data governance, documentation, oversight and monitoring.",
-    status: "Ready to test",
+    title: "2. Practitioner",
+    body: "Apply roles, risk classification, intended purpose and obligations to realistic scenarios.",
   },
   {
-    title: "4. Transparency & GPAI",
-    body: "Transparency duties and the basics of general-purpose AI model obligations.",
-    status: "Ready to test",
+    title: "3. Implementer",
+    body: "Run discovery, build governance controls, evidence and a practical remediation roadmap.",
+  },
+  {
+    title: "4. Client-Ready Consultant",
+    body: "Complete a simulated engagement and internal readiness gate before real client delivery.",
+  },
+  {
+    title: "5. Lead & Assurance",
+    body: "Advanced review, assurance, corrective action and mentoring for experienced consultants.",
   },
 ];
 
 export default function DashboardPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-14">
-      <p className="text-sm font-medium text-[var(--color-primary)]">PUBLIC CONTENT TEST MODE</p>
-      <h1 className="mt-2 font-display text-4xl font-semibold">Test the EU AI Act learning experience</h1>
-      <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">
-        No login required. Work through short lessons, memory aids and practice questions so we can test the experience before adding accounts and progress tracking.
+    <div className="mx-auto max-w-6xl px-6 py-14">
+      <p className="text-sm font-medium text-[var(--color-primary)]">AI ACT READY CONSULTANT ACADEMY</p>
+      <h1 className="mt-2 max-w-4xl font-display text-4xl font-semibold">
+        Train here before using AI Act Ready with real clients.
+      </h1>
+      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[var(--color-text-muted)]">
+        Start with the basics, practise on realistic scenarios, then complete a simulated client engagement before working independently in the field. No login is required during this content-testing phase.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
-          href="/learn"
+          href="/academy"
           className="rounded-full bg-[var(--color-primary)] px-6 py-3 font-medium text-[var(--color-bg)] transition-opacity hover:opacity-90"
         >
-          Start content test
+          Open consultant pathway
+        </Link>
+        <Link
+          href="/learn"
+          className="rounded-full border border-[var(--color-border)] px-6 py-3 font-medium"
+        >
+          Take validated quiz
         </Link>
         <Link
           href="/"
@@ -47,22 +59,25 @@ export default function DashboardPage() {
         </Link>
       </div>
 
-      <section className="mt-12 grid gap-4 md:grid-cols-2">
-        {MODULES.map((module) => (
+      <section className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {PATHWAY.map((item) => (
           <div
-            key={module.title}
+            key={item.title}
             className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6"
           >
-            <div className="text-xs font-medium text-[var(--color-primary)]">{module.status}</div>
-            <h2 className="mt-2 font-display text-xl font-semibold">{module.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">{module.body}</p>
+            <h2 className="font-display text-xl font-semibold">{item.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">{item.body}</p>
           </div>
         ))}
       </section>
 
-      <div className="mt-10 rounded-2xl border border-[var(--color-border)] p-6 text-sm text-[var(--color-text-muted)]">
-        This is an educational test build, not legal advice. The content should be reviewed against the official EU AI Act before public release.
+      <div className="mt-10 rounded-2xl border border-[var(--color-border)] p-6 text-sm leading-relaxed text-[var(--color-text-muted)]">
+        <span className="font-semibold text-[var(--color-text)]">Client-readiness principle:</span> passing a knowledge quiz is not enough. A consultant should demonstrate sound judgement, evidence gathering, clear client communication, scope control and appropriate escalation before being signed off for real engagements.
       </div>
+
+      <p className="mt-6 text-xs leading-relaxed text-[var(--color-text-subtle)]">
+        This is an internal AI Act Ready learning and readiness framework, not an external accredited qualification or legal-advice service.
+      </p>
     </div>
   );
 }
