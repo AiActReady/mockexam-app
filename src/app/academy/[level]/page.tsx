@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ACADEMY_LEVELS } from "@/data/curriculum";
 import { getModulesForLevel } from "@/data/academy-content";
+import { getAssessmentQuestionCount } from "@/data/assessments";
 
 export function generateStaticParams() {
   return ACADEMY_LEVELS.map((level) => ({ level: level.id }));
@@ -17,6 +18,7 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
   const previous = currentIndex > 0 ? ACADEMY_LEVELS[currentIndex - 1] : null;
   const next = currentIndex < ACADEMY_LEVELS.length - 1 ? ACADEMY_LEVELS[currentIndex + 1] : null;
   const modules = getModulesForLevel(levelId);
+  const questionCount = getAssessmentQuestionCount(levelId);
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-12">
@@ -105,13 +107,35 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
         <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
           The goal is not to memorise wording. It is to show that you can reason, document assumptions, ask for evidence and know when to escalate.
         </p>
+
+        {questionCount > 0 && (
+          <div className="mt-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-5">
+            <div className="font-semibold">Stage knowledge check · {questionCount} questions</div>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+              Work through the stage-specific scenarios after completing the modules. Answers include explanations and source-basis notes.
+            </p>
+            <Link
+              href={`/academy/${levelId}/check`}
+              className="mt-4 inline-flex rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]"
+            >
+              Start stage knowledge check
+            </Link>
+          </div>
+        )}
+
         {level.id === "foundation" && (
           <Link
             href="/learn"
-            className="mt-5 inline-flex rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]"
+            className="mt-5 inline-flex rounded-full border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium"
           >
-            Take the validated Foundation quiz
+            Open original validated Foundation quiz
           </Link>
+        )}
+
+        {questionCount === 0 && (
+          <p className="mt-5 text-sm leading-relaxed text-[var(--color-text-muted)]">
+            This advanced stage currently relies on practical case work and review rather than an automated score.
+          </p>
         )}
       </section>
 
