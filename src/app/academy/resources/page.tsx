@@ -1,0 +1,61 @@
+import Link from "next/link";
+
+const RESOURCES = [
+  {
+    title: "Current-law desk guide",
+    description: "Current implementation dates, source hierarchy and legal concepts that are easy to misremember from older training material.",
+    href: "/academy/reference",
+  },
+  {
+    title: "Discovery & AI inventory",
+    description: "Workshop prompts, minimum inventory fields, Shadow AI clues and a repeatable discovery workflow.",
+    href: "/academy/resources/discovery",
+  },
+  {
+    title: "Evidence quality & working papers",
+    description: "How to test evidence, document assumptions, maintain traceability and write defensible findings.",
+    href: "/academy/resources/evidence",
+  },
+  {
+    title: "Vendor due diligence",
+    description: "AI-specific procurement questions covering role, data, testing, oversight, security, changes and conformity evidence.",
+    href: "/academy/resources/vendor",
+  },
+  {
+    title: "Client delivery & handover",
+    description: "From kickoff and scope through gap analysis, remediation, executive readout and internal quality review.",
+    href: "/academy/resources/delivery",
+  },
+];
+
+export default function AcademyResourcesPage() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-12">
+      <Link href="/academy" className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)]">← Consultant Academy</Link>
+      <header className="mt-8 max-w-3xl">
+        <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">CONSULTANT RESOURCE LIBRARY</div>
+        <h1 className="mt-2 font-display text-4xl font-semibold">Practical field guides</h1>
+        <p className="mt-4 leading-relaxed text-[var(--color-text-muted)]">
+          Use these alongside the staged learning modules. They are deliberately practical: what to ask, what to record, what evidence to expect and when to escalate.
+        </p>
+      </header>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        {RESOURCES.map((resource) => (
+          <Link key={resource.href} href={resource.href} className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 transition hover:border-[var(--color-primary)]">
+            <h2 className="font-display text-xl font-semibold">{resource.title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">{resource.description}</p>
+            <div className="mt-5 text-sm font-medium text-[var(--color-primary)]">Open guide →</div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="mt-8 rounded-3xl border border-[var(--color-primary)]/40 bg-[var(--color-surface-raised)] p-6">
+        <div className="font-semibold">Use the field guides as prompts, not substitutes for judgement.</div>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+          For live work, confirm current authoritative sources, record the facts and evidence behind material decisions, and escalate specialist legal, privacy, security or technical questions when required.
+        </p>
+      </div>
+    </div>
+  );
+}
