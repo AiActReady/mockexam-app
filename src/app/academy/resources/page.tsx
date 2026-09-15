@@ -27,6 +27,11 @@ const RESOURCES = [
     href: "/academy/templates",
   },
   {
+    title: "Supervised practice review guide",
+    description: "A human coaching guide for reviewing simulated delivery across scope, role mapping, classification, evidence, communication and escalation.",
+    href: "/academy/client-ready/review-guide",
+  },
+  {
     title: "Discovery & AI inventory",
     description: "Workshop prompts, minimum inventory fields, Shadow AI clues and a repeatable discovery workflow.",
     href: "/academy/resources/discovery",
