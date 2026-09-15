@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ACADEMY_LEVELS } from "@/data/curriculum";
+import { getModulesForLevel } from "@/data/academy-content";
 
 export function generateStaticParams() {
   return ACADEMY_LEVELS.map((level) => ({ level: level.id }));
@@ -15,6 +16,7 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
   const currentIndex = ACADEMY_LEVELS.findIndex((item) => item.id === levelId);
   const previous = currentIndex > 0 ? ACADEMY_LEVELS[currentIndex - 1] : null;
   const next = currentIndex < ACADEMY_LEVELS.length - 1 ? ACADEMY_LEVELS[currentIndex + 1] : null;
+  const modules = getModulesForLevel(levelId);
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-12">
@@ -34,36 +36,52 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
         <p className="mt-5 leading-relaxed text-[var(--color-text-muted)]">{level.purpose}</p>
       </header>
 
-      <div className="mt-8 grid gap-5 lg:grid-cols-2">
-        <section className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6">
-          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Learn</div>
-          <h2 className="mt-2 font-display text-xl font-semibold">Knowledge modules</h2>
-          <ol className="mt-5 space-y-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
-            {level.modules.map((module, index) => (
-              <li key={module} className="flex gap-3">
-                <span className="font-semibold text-[var(--color-primary)]">{index + 1}.</span>
-                <span>{module}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
+      <section className="mt-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 md:p-8">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Learn</div>
+            <h2 className="mt-2 font-display text-xl font-semibold">Training modules</h2>
+          </div>
+          <div className="text-sm text-[var(--color-text-subtle)]">{modules.length} modules populated</div>
+        </div>
 
-        <section className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6">
-          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Practise</div>
-          <h2 className="mt-2 font-display text-xl font-semibold">Simulated client work</h2>
-          <ul className="mt-5 space-y-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
-            {level.practical.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="text-[var(--color-primary)]">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+        <div className="mt-6 space-y-3">
+          {modules.map((module, index) => (
+            <Link
+              key={module.slug}
+              href={`/academy/${levelId}/${module.slug}`}
+              className="flex flex-col gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-5 transition hover:border-[var(--color-primary)] md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">
+                  Module {index + 1} · {module.duration}
+                </div>
+                <div className="mt-1 font-display text-lg font-semibold">{module.title}</div>
+                <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-muted)]">{module.objective}</p>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-[var(--color-primary)]">Open →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-5 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6">
+        <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Practise</div>
+        <h2 className="mt-2 font-display text-xl font-semibold">Simulated client work</h2>
+        <ul className="mt-5 space-y-3 text-sm leading-relaxed text-[var(--color-text-muted)]">
+          {level.practical.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="text-[var(--color-primary)]">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="mt-5 rounded-3xl border border-[var(--color-border)] p-6 md:p-8">
-        <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">Evidence you should be able to produce</div>
+        <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">
+          Evidence you should be able to produce
+        </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {level.clientDeliverables.map((item) => (
             <div key={item} className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 text-sm">
@@ -84,7 +102,7 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
             href="/learn"
             className="mt-5 inline-flex rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]"
           >
-            Take the current validated Foundation quiz
+            Take the validated Foundation quiz
           </Link>
         )}
       </section>
