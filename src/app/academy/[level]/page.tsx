@@ -76,6 +76,14 @@ export default async function AcademyLevelPage({ params }: { params: Promise<{ l
             </li>
           ))}
         </ul>
+        {levelId === "client-ready" && (
+          <Link
+            href="/academy/client-ready/simulation"
+            className="mt-5 inline-flex rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)]"
+          >
+            Open Northstar capstone simulation
+          </Link>
+        )}
       </section>
 
       <section className="mt-5 rounded-3xl border border-[var(--color-border)] p-6 md:p-8">
